@@ -7,6 +7,5 @@ router.get("/", async (req, res) => {
 router.get("/about", async (req, res) => {
   res.render("about", { title: "About" });
 });
-//GET ALL USERS
 
 module.exports = router;
