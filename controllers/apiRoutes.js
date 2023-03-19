@@ -38,6 +38,23 @@ router.post("/users", async (req, res) => {
   }
 });
 
+router.put("/users/:id", async (req, res) => {
+  try {
+    const UserData = await User.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (!UserData[0]) {
+      res.status(404).json({ message: "No user with this id!" });
+      return;
+    }
+    res.status(200).json({ message: "User updated!" });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.delete("/users/:id", async (req, res) => {
   try {
     const UserData = User.destroy({ where: { id: req.params.id } });
@@ -54,6 +71,23 @@ router.get("/blogs", async (req, res) => {
   try {
     const BlogData = await Blog.findAll();
     console.log(BlogData);
+    res.status(200).json(BlogData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.put("/blogs/:id", async (req, res) => {
+  try {
+    const BlogData = await Blog.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (!BlogData[0]) {
+      res.status(404).json({ message: "No blog with this id!" });
+      return;
+    }
     res.status(200).json(BlogData);
   } catch (err) {
     res.status(500).json(err);
@@ -81,6 +115,23 @@ router.post("/blogs", async (req, res) => {
       post: req.body.post,
     });
     res.status(200).json({ message: "Blog created!" });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.put("/blogs/:id", async (req, res) => {
+  try {
+    const BlogData = await Blog.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (!BlogData[0]) {
+      res.status(404).json({ message: "No blog with this id!" });
+      return;
+    }
+    res.status(200).json({ message: "Blog updated!" });
   } catch (err) {
     res.status(500).json(err);
   }
