@@ -11,7 +11,7 @@ Blog.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    author_name: {
       type: DataTypes.STRING,
       allowNull: false,
       references: {
@@ -19,12 +19,16 @@ Blog.init(
         key: "name",
       },
     },
-  },
-  {
-    body: {
-      type: DataTypes.TEXT,
+    subject: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
+    post: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  },
+  {
     sequelize,
     timestamps: true,
     modelname: "blog",

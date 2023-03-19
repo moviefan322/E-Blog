@@ -50,4 +50,52 @@ router.delete("/users/:id", async (req, res) => {
   }
 });
 
+router.get("/blogs", async (req, res) => {
+  try {
+    const BlogData = await Blog.findAll();
+    console.log(BlogData);
+    res.status(200).json(BlogData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/blogs/:id", async (req, res) => {
+  try {
+    const BlogData = await Blog.findByPk(req.params.id);
+    if (!BlogData) {
+      return res.status(404).json({ message: "Could not find post!" });
+    }
+    console.log(BlogData);
+    res.status(200).json(BlogData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.post("/blogs", async (req, res) => {
+  try {
+    const BlogData = await Blog.create({
+      author_name: req.body.author_name,
+      subject: req.body.subject,
+      post: req.body.post,
+    });
+    res.status(200).json({ message: "Blog created!" });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.delete("/blogs/:id", async (req, res) => {
+  try {
+    const BlogData = Blog.destroy({ where: { id: req.params.id } });
+    if (!BlogData) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+    res.status(200).json({ message: "Post Deleted!" });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

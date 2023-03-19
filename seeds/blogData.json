@@ -1,16 +1,16 @@
 [
   {
-    "user": "David Holmes",
+    "author_name": "Jabberwocky Ebaneezer",
     "subject": "Boolean Values",
     "post": "Oh my god, they are so true!"
   },
   {
-    "user": "Barry Bobblesticks",
+    "author_name": "Doctor Insane",
     "subject": "Chickpea Variables",
     "post": "Turned out they were croutons!"
   },
   {
-    "user": "Choo Maguire",
+    "author_name": "Barry Lyndon",
     "subject": "Stringify",
     "post": "I wanted to stringify my array"
   }
