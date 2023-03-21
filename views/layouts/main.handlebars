@@ -13,7 +13,7 @@
     <nav id="header">
       <img id="logo" src="/images/tblogo.png" alt="Tech blog logo" />
       {{#if loggedIn}}
-        <a class="navLinks" id="logout" href="">Logout</a>
+        <button class="navLinks" id="logout" href="/logout">Logout</button>
       {{else}}
         <a class="navlinks" id="login" href="/login">Login</a>
       {{/if}}
@@ -21,6 +21,9 @@
       <a class="navlinks" href="/">Home</a>
     </nav>
     {{{body}}}
-    {{! javascript link }}
+
+    {{#if loggedIn}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
   </body>
 </html>
