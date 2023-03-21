@@ -16,5 +16,17 @@
     "subject": "Stringify",
     "post": "I wanted to stringify my array",
     "user_id": "5"
+  },
+  {
+    "author_name": "Philip Neumann",
+    "subject": "Boobs",
+    "post": "How can i program boobs?",
+    "user_id": "6"
+  },
+  {
+    "author_name": "Philip Neumann",
+    "subject": "How much wood",
+    "post": "Would a wood chuck chuck?",
+    "user_id": "6"
   }
 ]

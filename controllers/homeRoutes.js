@@ -34,11 +34,23 @@ router.get("/register", (req, res) => {
   res.render("register", { title: "Sign Up" });
 });
 
-router.get("/dashboard", (req, res) => {
-  res.render("dashboard", {
-    title: "Dashboard",
-    loggedIn: req.session.loggedIn,
-  });
+router.get("/dashboard", async (req, res) => {
+  try {
+    const BlogData = await Blog.findAll({
+      where: { user_id: req.session.user_id },
+      order: [["id", "DESC"]],
+    });
+
+    const displayPosts = BlogData.map((posts) => posts.get({ plain: true }));
+
+    res.render("dashboard", {
+      title: "Dashboard",
+      loggedIn: req.session.loggedIn,
+      displayPosts,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;

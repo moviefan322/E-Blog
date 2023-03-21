@@ -1,6 +1,13 @@
 {{#if loggedIn}}
   <h2>Dashboard</h2>
 
+  {{#each displayPosts as |post|}}
+
+    {{post.subject}}
+    {{post.post}}
+
+  {{/each}}
+
 {{else}}
 
   <p>You must be logged in to view this page.</p>
