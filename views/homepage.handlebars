@@ -3,7 +3,8 @@
 {{#each displayPosts as |post|}}
   <section class="card">
     <p class="cardsection">Subject: {{post.subject}}</p>
-    <p class="cardsection">Posted By: {{post.author_name}}</p>
+    <p class="cardsection">By: {{post.author_name}}</p>
+    <p class="cardsection">Posted on: {{format_date post.createdAt}}</p>
     <p class="cardsection">{{post.post}}</p>
 
   </section>

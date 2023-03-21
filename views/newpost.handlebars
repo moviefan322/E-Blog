@@ -1,0 +1,41 @@
+<div class="card">
+  <h2>New Post</h2>
+  <form action="/api/blogs" method="post" id="submit-form">
+    <div class="field">
+      <label for="Name">Name:</label>
+      <input
+        type="text"
+        id="author_name"
+        name="author_name"
+        placeholder="Write name here"
+      />
+    </div>
+    <div class="field">
+      <label for="Subject">Subject:</label>
+      <input
+        type="text"
+        id="subject"
+        name="subject"
+        placeholder="Write subject here"
+      />
+    </div>
+    <div class="field">
+      <label for="post">Text:</label>
+      <textarea
+        type="text"
+        id="post"
+        name="post"
+        placeholder="Write content here"
+        type="hidden"
+      ></textarea>
+    </div>
+    <div class="field">
+      <label for="Subject"></label>
+      <input type="text" id="user_id" name="user_id" value="{{user_id}}" />
+    </div>
+
+    <div>
+      <button type="submit" class="button">Submit</button>
+    </div>
+  </form>
+</div>

@@ -53,4 +53,16 @@ router.get("/dashboard", async (req, res) => {
   }
 });
 
+router.get("/newpost", async (req, res) => {
+  try {
+    res.render("newpost", {
+      title: "New Post",
+      loggedIn: req.session.loggedIn,
+      user_id: req.session.user_id,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

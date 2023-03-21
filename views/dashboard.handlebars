@@ -3,10 +3,15 @@
 
   {{#each displayPosts as |post|}}
 
-    {{post.subject}}
-    {{post.post}}
-
+    <section class="card">
+      <p class="cardsection">Subject: {{post.subject}}</p>
+      <p class="cardsection">Posted on: {{format_date post.createdAt}}</p>
+      <p class="cardsection">{{post.post}}</p>
+      <button id="editpost" class="button">Edit Post</button>
+      <button id="deletepost" class="button">Delete Post</button>
+    </section>
   {{/each}}
+  <a href="/newpost" class="button">+ Write New Post</a>
 
 {{else}}
 

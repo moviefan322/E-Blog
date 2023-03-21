@@ -42,3 +42,18 @@
   margin: 0.4em;
   padding: 0.1em;
 }
+
+.button {
+  background-color: rgb(245, 245, 188);
+  border: solid black 1.5px;
+  padding: 5px;
+  text-decoration: none;
+  font-family: monospace;
+  font-size: 0.5em;
+  margin: 0.3em;
+  margin-top: 1.2em;
+}
+
+#user_id {
+  display: none;
+}

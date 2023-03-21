@@ -151,13 +151,16 @@ router.get("/blogs/:id", async (req, res) => {
 });
 
 router.post("/blogs", async (req, res) => {
+  console.log(req.body);
   try {
     const BlogData = await Blog.create({
       author_name: req.body.author_name,
       subject: req.body.subject,
       post: req.body.post,
+      user_id: req.body.user_id,
     });
-    res.status(200).json({ message: "Blog created!" });
+    res.status(201);
+    res.redirect("/dashboard");
   } catch (err) {
     res.status(500).json(err);
   }
