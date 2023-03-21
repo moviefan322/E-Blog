@@ -31,6 +31,11 @@ router.post("/users", async (req, res) => {
       email: req.body.email,
       password: req.body.password,
     });
+    req.session.save(() => {
+      req.session.user_id = UserData.id;
+      req.session.loggedIn = true;
+      res.json({ message: "Login Successful!" });
+    });
     res.status(200).json({ message: "User created!" });
   } catch (err) {
     res.status(500).json(err);
