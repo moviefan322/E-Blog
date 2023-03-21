@@ -22,7 +22,16 @@ router.get("/about", async (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  res.render("login");
+  if (req.session.logged_in) {
+    res.redirect("/");
+    return;
+  }
+
+  res.render("login", { title: "Login" });
+});
+
+router.get("/register", (req, res) => {
+  res.render("register", { title: "Sign Up" });
 });
 
 module.exports = router;
