@@ -23,5 +23,10 @@
     "name": "Barry Lyndon",
     "email": "Blyndon@yahoo.com",
     "password": "kubrickschild"
+  },
+  {
+    "name": "Philip Neumann",
+    "email": "philman202@yahoo.com",
+    "password": "tesseradecades"
   }
 ]

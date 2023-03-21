@@ -86,7 +86,6 @@ router.post("/users/login", async (req, res) => {
     }
 
     req.session.save(() => {
-      req.session.user_id = userData.id;
       req.session.loggedIn = true;
 
       res.json({ message: "Login Successful!" });
@@ -96,8 +95,8 @@ router.post("/users/login", async (req, res) => {
   }
 });
 
-router.post("/api/users/logout", (req, res) => {
-  if (req.session.loggedIn) {
+router.post('/logout', (req, res) => {
+  if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
     });
