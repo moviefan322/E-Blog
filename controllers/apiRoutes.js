@@ -1,6 +1,5 @@
 const router = require("express").Router();
-const User = require("../models/User");
-const Blog = require("../models/Blog");
+const { User, Blog } = require("../models");
 
 router.get("/users", async (req, res) => {
   try {
@@ -64,6 +63,33 @@ router.delete("/users/:id", async (req, res) => {
     res.status(200).json({ message: "User Deleted!" });
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+router.post("/users/login", async (req, res) => {
+  try {
+    const userData = await User.findOne({ where: { email: req.body.email } });
+
+    if (!userData) {
+      res.status(400).json({ message: "User not found!" });
+      return;
+    }
+
+    const validPassword = await userData.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      res.status(400).json({ message: "Incorrect password!" });
+      return;
+    }
+
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+
+      res.json({ message: "Login Successful!" });
+    });
+  } catch (err) {
+    res.status(400).json(err);
   }
 });
 

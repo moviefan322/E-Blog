@@ -14,10 +14,6 @@ Blog.init(
     author_name: {
       type: DataTypes.STRING,
       allowNull: false,
-      references: {
-        model: "user",
-        key: "name",
-      },
     },
     subject: {
       type: DataTypes.STRING,
@@ -27,10 +23,19 @@ Blog.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "user",
+        key: "id",
+      },
+    },
   },
   {
     sequelize,
     timestamps: true,
+    underscored: true,
     modelname: "blog",
   }
 );

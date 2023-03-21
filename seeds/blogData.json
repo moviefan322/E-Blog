@@ -2,16 +2,19 @@
   {
     "author_name": "Jabberwocky Ebaneezer",
     "subject": "Boolean Values",
-    "post": "Oh my god, they are so true!"
+    "post": "Oh my god, they are so true!",
+    "user_id": 3
   },
   {
     "author_name": "Doctor Insane",
     "subject": "Chickpea Variables",
-    "post": "Turned out they were croutons!"
+    "post": "Turned out they were croutons!",
+    "user_id": "2"
   },
   {
     "author_name": "Barry Lyndon",
     "subject": "Stringify",
-    "post": "I wanted to stringify my array"
+    "post": "I wanted to stringify my array",
+    "user_id": "5"
   }
 ]

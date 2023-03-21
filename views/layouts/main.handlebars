@@ -3,15 +3,24 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js"
+    ></script>
     <title> {{title}} </title>
   </head>
   <body>
-    <nav>
-      <img src="../../images/tblogo.png" alt="Tech blog logo" />
-      <a class="navlinks" href="">Home</a>
+    <nav id="header">
+      <img id="logo" src="/images/tblogo.png" alt="Tech blog logo" />
+      {{#if loggedIn}}
+        <a class="navLinks" id="logout" href="">Logout</a>
+      {{else}}
+        <a class="navlinks" id="login" href="/login">Login</a>
+      {{/if}}
       <a class="navlinks" href="">Dashboard</a>
-      <a class="navlinks" href="">Logout</a>
+      <a class="navlinks" href="/">Home</a>
     </nav>
     {{{body}}}
+    {{! javascript link }}
   </body>
 </html>

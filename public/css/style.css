@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+  font-size: 26px;
+  background-color: rgb(155, 242, 155);
+}
+
+#logo {
+  height: 35px;
+  margin: 0.5em;
+}
+
+#header {
+  margin: 0;
+  background: rgb(1, 86, 1);
+  color: rgb(245, 245, 188);
+  border: solid black 3px;
+}
+
+.navlinks {
+  float: right;
+  background-color: rgb(245, 245, 188);
+  border: solid black 1.5px;
+  padding: 5px;
+  text-decoration: none;
+  font-family: monospace;
+  font-size: 0.5em;
+  margin: 0.3em;
+  margin-top: 1.2em;
+}
+
+.card {
+  background-color: rgb(87, 87, 87);
+  border: solid black 3px;
+  margin: 0.5em;
+}
+
+.cardsection {
+  display: block;
+  background-color: rgb(158, 158, 158);
+  color: black;
+  font-size: 0.5em;
+  margin: 0.4em;
+  padding: 0.1em;
+}
