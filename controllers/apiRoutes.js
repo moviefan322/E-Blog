@@ -74,29 +74,34 @@ router.post("/users/login", async (req, res) => {
     const userData = await User.findOne({ where: { email: req.body.email } });
 
     if (!userData) {
-      res.status(400).json({ message: "User not found!" });
+      res
+        .status(400)
+        .json({ message: "Incorrect email or password, please try again" });
       return;
     }
 
     const validPassword = await userData.checkPassword(req.body.password);
 
     if (!validPassword) {
-      res.status(400).json({ message: "Incorrect password!" });
+      res
+        .status(400)
+        .json({ message: "Incorrect email or password, please try again" });
       return;
     }
 
     req.session.save(() => {
+      req.session.user_id = userData.id;
       req.session.loggedIn = true;
 
-      res.json({ message: "Login Successful!" });
+      res.json({ user: userData, message: "You are now logged in!" });
     });
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-router.post('/logout', (req, res) => {
-  if (req.session.logged_in) {
+router.post("/users/logout", (req, res) => {
+  if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
     });
@@ -153,23 +158,6 @@ router.post("/blogs", async (req, res) => {
       post: req.body.post,
     });
     res.status(200).json({ message: "Blog created!" });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-router.put("/blogs/:id", async (req, res) => {
-  try {
-    const BlogData = await Blog.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
-    });
-    if (!BlogData[0]) {
-      res.status(404).json({ message: "No blog with this id!" });
-      return;
-    }
-    res.status(200).json({ message: "Blog updated!" });
   } catch (err) {
     res.status(500).json(err);
   }
