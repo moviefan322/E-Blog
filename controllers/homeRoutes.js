@@ -39,10 +39,14 @@ router.get("/register", (req, res) => {
 });
 
 router.get("/dashboard", async (req, res) => {
+  if (!req.session.loggedIn) {
+    return res.redirect("/login");
+  }
   try {
     const BlogData = await Blog.findAll({
       where: { user_id: req.session.user_id },
       order: [["id", "DESC"]],
+      include: { model: Comment },
     });
 
     const displayPosts = BlogData.map((posts) => posts.get({ plain: true }));

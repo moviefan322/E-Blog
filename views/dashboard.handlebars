@@ -1,24 +1,25 @@
-{{#if loggedIn}}
-  <h2>Dashboard</h2>
+<h2>Dashboard</h2>
 
-  {{#each displayPosts as |post|}}
+<a href="/newpost" class="button">+ Write New Post</a>
+{{#each displayPosts as |post|}}
+  <section class="card">
+    <p id="subjectline" class="cardsection">Subject: {{post.subject}}</p>
+    <p class="cardsection">Posted on: {{format_date post.createdAt}}</p>
+    <p id="postline" class="cardsection">{{post.post}}</p>
+    <button class="button editpost">Edit Post</button>
+    <button class="button deletepost">Delete Post</button>
+    <p id="blog_id">{{post.id}}</p>
+    <h3 id="comments">Comments:</h3>
+    {{#each Comments as |comment|}}
+      <p class="cardsection">"{{comment.comment}}"" -posted by
+        {{comment.username}}
+        at
+        {{format_date comment.createdAt}}</p>
+    {{/each}}
+  </section>
+{{/each}}
 
-    <section class="card">
-      <p id="subjectline" class="cardsection">Subject: {{post.subject}}</p>
-      <p class="cardsection">Posted on: {{format_date post.createdAt}}</p>
-      <p id="postline" class="cardsection">{{post.post}}</p>
-      <button class="button editpost">Edit Post</button>
-      <button class="button deletepost">Delete Post</button>
-      <p id="blog_id">{{post.id}}</p>
-    </section>
-  {{/each}}
-  <a href="/newpost" class="button">+ Write New Post</a>
-
-{{else}}
-
-  <p>You must be logged in to view this page.</p>
-  <p>Please <a href="/login">login</a> or <a href="/register">sign up</a></p>
-
-{{/if}}
+<p>You must be logged in to view this page.</p>
+<p>Please <a href="/login">login</a> or <a href="/register">sign up</a></p>
 
 <script src="/js/dashboard.js"></script>
