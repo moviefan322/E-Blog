@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Blog } = require("../models");
+const { User, Blog, Comment } = require("../models");
 
 router.get("/users", async (req, res) => {
   try {
@@ -174,6 +174,31 @@ router.delete("/blogs/:id", async (req, res) => {
       return res.status(404).json({ message: "Post not found" });
     }
     res.status(200);
+    res.redirect("/dashboard");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/comments", async (req, res) => {
+  try {
+    const CommentData = await Comment.findAll();
+    console.log(CommentData);
+    res.status(200).json(CommentData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.post("/comments", async (req, res) => {
+  console.log(req.body);
+  try {
+    const BlogData = await Comment.create({
+      comment: req.body.comment,
+      username: req.body.subject,
+      blog_id: req.body.blog_id,
+    });
+    res.status(201);
     res.redirect("/dashboard");
   } catch (err) {
     res.status(500).json(err);
