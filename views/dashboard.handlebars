@@ -7,8 +7,8 @@
       <p id="subjectline" class="cardsection">Subject: {{post.subject}}</p>
       <p class="cardsection">Posted on: {{format_date post.createdAt}}</p>
       <p id="postline" class="cardsection">{{post.post}}</p>
-      <button id="editpost" class="button">Edit Post</button>
-      <button id="deletepost" class="button">Delete Post</button>
+      <button class="button editpost">Edit Post</button>
+      <button class="button deletepost">Delete Post</button>
       <p id="blog_id">{{post.id}}</p>
     </section>
   {{/each}}
