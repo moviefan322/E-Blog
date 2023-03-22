@@ -54,6 +54,8 @@
   margin-top: 1.2em;
 }
 
-#user_id {
+#user_id,
+#author_name,
+#blog_Id {
   display: none;
 }

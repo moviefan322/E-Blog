@@ -4,12 +4,13 @@
   {{#each displayPosts as |post|}}
 
     <section class="card">
-      <p class="cardsection">Subject: {{post.subject}}</p>
+      <p id="subjectline" class="cardsection">Subject: {{post.subject}}</p>
       <p class="cardsection">Posted on: {{format_date post.createdAt}}</p>
-      <p class="cardsection">{{post.post}}</p>
+      <p id="postline" class="cardsection">{{post.post}}</p>
       <button id="editpost" class="button">Edit Post</button>
       <button id="deletepost" class="button">Delete Post</button>
     </section>
+    <p id="blog_id">{{post.id}}</p>
   {{/each}}
   <a href="/newpost" class="button">+ Write New Post</a>
 
@@ -19,3 +20,5 @@
   <p>Please <a href="/login">login</a> or <a href="/register">sign up</a></p>
 
 {{/if}}
+
+<script src="/js/dashboard.js"></script>

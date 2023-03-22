@@ -59,6 +59,7 @@ router.get("/newpost", async (req, res) => {
       title: "New Post",
       loggedIn: req.session.loggedIn,
       user_id: req.session.user_id,
+      name: req.session.name,
     });
   } catch (err) {
     res.status(500).json(err);

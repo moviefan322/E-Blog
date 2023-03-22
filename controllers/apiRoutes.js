@@ -92,6 +92,7 @@ router.post("/users/login", async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.loggedIn = true;
+      req.session.name = userData.name;
 
       res.json({ user: userData, message: "You are now logged in!" });
     });
@@ -172,7 +173,8 @@ router.delete("/blogs/:id", async (req, res) => {
     if (!BlogData) {
       return res.status(404).json({ message: "Post not found" });
     }
-    res.status(200).json({ message: "Post Deleted!" });
+    res.status(200);
+    res.redirect("/dashboard");
   } catch (err) {
     res.status(500).json(err);
   }
