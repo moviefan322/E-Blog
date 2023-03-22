@@ -1,4 +1,5 @@
 <h2>Recent Posts:</h2>
+<p id="username">{{name}}</p>
 
 {{#each displayPosts as |post|}}
   <section class="card">
@@ -6,6 +7,7 @@
     <p class="cardsection">By: {{post.author_name}}</p>
     <p class="cardsection">Posted on: {{format_date post.createdAt}}</p>
     <p class="cardsection">{{post.post}}</p>
+    <p id="blogId">{{post.id}}</p>
     <h3 id="comments">Comments:</h3>
     {{#each Comments as |comment|}}
       <p class="cardsection">"{{comment.comment}}"" -posted by
@@ -13,6 +15,9 @@
         at
         {{format_date comment.createdAt}}</p>
     {{/each}}
+    <button class="addcomment button" class="button">+ Add Comment</button>
   </section>
 
 {{/each}}
+
+<script src="/js/addcomment.js"></script>
