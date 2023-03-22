@@ -193,13 +193,13 @@ router.get("/comments", async (req, res) => {
 router.post("/comments", async (req, res) => {
   console.log(req.body);
   try {
-    const BlogData = await Comment.create({
+    const CommentData = await Comment.create({
       comment: req.body.comment,
-      username: req.body.subject,
+      username: req.body.username,
       blog_id: req.body.blog_id,
     });
     res.status(201);
-    res.redirect("/dashboard");
+    res.json(CommentData);
   } catch (err) {
     res.status(500).json(err);
   }

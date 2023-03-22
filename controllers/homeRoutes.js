@@ -1,9 +1,12 @@
 const router = require("express").Router();
-const { Blog, User } = require("../models");
+const { Blog, User, Comment } = require("../models");
 
 router.get("/", async (req, res) => {
   try {
-    const BlogData = await Blog.findAll({ order: [["id", "DESC"]] });
+    const BlogData = await Blog.findAll({
+      order: [["id", "DESC"]],
+      include: { model: Comment },
+    });
 
     const displayPosts = BlogData.map((posts) => posts.get({ plain: true }));
 

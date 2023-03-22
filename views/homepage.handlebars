@@ -6,7 +6,13 @@
     <p class="cardsection">By: {{post.author_name}}</p>
     <p class="cardsection">Posted on: {{format_date post.createdAt}}</p>
     <p class="cardsection">{{post.post}}</p>
-
+    <h3 id="comments">Comments:</h3>
+    {{#each Comments as |comment|}}
+      <p class="cardsection">"{{comment.comment}}"" -posted by
+        {{comment.username}}
+        at
+        {{format_date comment.createdAt}}</p>
+    {{/each}}
   </section>
 
 {{/each}}
