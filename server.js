@@ -1,7 +1,9 @@
 const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
 const express = require("express");
 var session = require("express-session");
 const exphbs = require("express-handlebars");
+const mysql = require("mysql");
 const routes = require("./controllers");
 const helpers = require("./utils/helpers");
 
@@ -10,6 +12,14 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+var connection = mysql.createPool({
+  connectionLimit: 10,
+  host: "localhost",
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
+});
 
 const hbs = exphbs.create({ helpers });
 
