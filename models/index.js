@@ -3,15 +3,9 @@ const Blog = require("./Blog");
 const Comment = require("./Comment");
 const { Sequelize } = require("sequelize");
 
-const sequelize = new Sequelize("localhost", {
-  dialect: "postgres",
-  protocol: "postgres",
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false,
-    },
-  },
+const sequelize = new Sequelize("eblog_db", "root", "tesseradecades", {
+  host: "localhost",
+  dialect: "mysql",
 });
 
 User.hasMany(Blog, {
