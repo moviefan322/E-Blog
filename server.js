@@ -3,7 +3,7 @@ require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
 const express = require("express");
 var session = require("express-session");
 const exphbs = require("express-handlebars");
-const mysql = rquire("mysql");
+const mysql = require("mysql");
 const mysql2 = require("mysql2");
 const routes = require("./controllers");
 const helpers = require("./utils/helpers");
