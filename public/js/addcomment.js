@@ -24,7 +24,12 @@ document.addEventListener("DOMContentLoaded", () => {
       postButtons.forEach((postButton) => {
         postButton.addEventListener("click", () => {
           if (!username) {
-            commentInput.value = "Please Login to post";
+            const logBut = document.getElementById("postdiv");
+            const newP = document.createElement("p");
+            newP.classList.add("red");
+            newP.textContent = "Please login to leave a comment.";
+            logBut.appendChild(newP);
+            postButton.remove();
             return;
           }
           const comment = commentInput.value;

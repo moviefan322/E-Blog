@@ -2,7 +2,7 @@
 <p id="username">{{name}}</p>
 
 {{#each displayPosts as |post|}}
-  <section class="card">
+  <section id="postdiv" class="card">
     <p class="cardsection">Subject: {{post.subject}}</p>
     <p class="cardsection">By: {{post.author_name}}</p>
     <p class="cardsection">Posted on: {{format_date post.createdAt}}</p>
