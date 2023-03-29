@@ -14,9 +14,18 @@ const registerFormHandler = async (event) => {
 
     if (response.ok) {
       alert("Registration successful!");
+      await fetch("/api/users/login", {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+        headers: { "Content-Type": "application/json " },
+      });
       document.location.replace("/");
     } else {
-      alert("Oops! Something went wrong");
+      const logBut = document.getElementById("regdiv");
+      const newP = document.createElement("p");
+      newP.classList.add("red");
+      newP.textContent = "Registration Unsuccessful. Please try again.";
+      logBut.appendChild(newP);
     }
   }
 };

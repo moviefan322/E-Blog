@@ -14,7 +14,11 @@ const loginFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace("/");
     } else {
-      alert("Login Unsuccessful");
+      const logBut = document.getElementById("formdiv");
+      const newP = document.createElement("p");
+      newP.classList.add("red");
+      newP.textContent = "Login Unsuccessful. Please try again.";
+      logBut.appendChild(newP);
     }
   }
 };
