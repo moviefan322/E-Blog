@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
       postButtons.forEach((postButton) => {
         postButton.addEventListener("click", () => {
           if (!username) {
-            const logBut = document.getElementById("postdiv");
+            const logBut = document.getElementById(`postdiv${blog_id}`);
             const newP = document.createElement("p");
             newP.classList.add("red");
             newP.textContent = "Please login to leave a comment.";
