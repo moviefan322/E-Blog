@@ -23,6 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const postButtons = document.querySelectorAll(".postCommentButton");
       postButtons.forEach((postButton) => {
         postButton.addEventListener("click", () => {
+          if (!username) {
+            commentInput.value = "Please Login to post";
+            return;
+          }
           const comment = commentInput.value;
           fetch(`/api/comments`, {
             method: "POST",
